@@ -15,7 +15,7 @@ export default function Timeline() {
   });
   const timelineEvents = [
     {
-      time: IS_GROOM_SIDE ? "10:30" : "10:10",
+      time: IS_GROOM_SIDE ? "10:30" : "10:00",
       title: "Đón khách",
       icon: "https://w.ladicdn.com/s400x400/6322a62f2dad980013bb5005/untitled-6-20250420030805-cyjyq.png",
     },
@@ -25,7 +25,7 @@ export default function Timeline() {
     //   icon: "https://w.ladicdn.com/s400x400/6322a62f2dad980013bb5005/untitled-4-20250420023945-8bthf.png",
     // },
     {
-      time: "11:11",
+      time: IS_GROOM_SIDE ? "11:00" : "11:30",
       title: "Khai tiệc",
       icon: "https://w.ladicdn.com/s400x400/6322a62f2dad980013bb5005/untitled-5-20250420024050-0e1lg.png",
     },
