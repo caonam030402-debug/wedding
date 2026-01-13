@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect, Suspense } from "react";
 import { FieldValues, useForm, useWatch } from "react-hook-form";
 import { motion, useInView } from "motion/react";
 
 import { toast } from "sonner";
+import { useSearchParams } from "next/navigation";
+import { formatGuestName } from "@/lib/utils";
 
 import {
   Select,
@@ -28,12 +30,30 @@ import {
 } from "@/enums";
 import GiftDialog from "./GiftDialog";
 
-export default function WeddingRsvpForm() {
+function RsvpFormContent() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   const [isGiftDialogOpen, setIsGiftDialogOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const form = useForm();
+  const searchParams = useSearchParams();
+
+  const form = useForm({
+    defaultValues: {
+      [RSVP_FORM_FIELDS.NAME]: "",
+      [RSVP_FORM_FIELDS.MESSAGE]: "",
+      [RSVP_FORM_FIELDS.WILL_ATTEND]: "",
+      [RSVP_FORM_FIELDS.WITH_WHO]: "",
+      [RSVP_FORM_FIELDS.NUMBER_OF_PEOPLE]: 1,
+    },
+  });
+
+  useEffect(() => {
+    const guestName = searchParams.get("u");
+    if (guestName) {
+      form.setValue(RSVP_FORM_FIELDS.NAME, formatGuestName(guestName));
+    }
+  }, [searchParams, form]);
+
   const willAttendValue = useWatch({
     control: form.control,
     name: RSVP_FORM_FIELDS.WILL_ATTEND,
@@ -104,6 +124,23 @@ export default function WeddingRsvpForm() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
+          <FormField
+            control={form.control}
+            name={RSVP_FORM_FIELDS.NAME}
+            rules={{ required: VALIDATION_MESSAGES.NAME_REQUIRED }}
+            render={({ field, fieldState }) => (
+              <FormItem>
+                <FormControl>
+                  <Input placeholder="Tên của bạn" {...field} />
+                </FormControl>
+                {fieldState.error && (
+                  <p className="text-sm text-destructive mt-1 text-left">
+                    {fieldState.error.message}
+                  </p>
+                )}
+              </FormItem>
+            )}
+          />
           <FormField
             control={form.control}
             name={RSVP_FORM_FIELDS.MESSAGE}
@@ -239,5 +276,13 @@ export default function WeddingRsvpForm() {
 
       <GiftDialog open={isGiftDialogOpen} onOpenChange={setIsGiftDialogOpen} />
     </div>
+  );
+}
+
+export default function WeddingRsvpForm() {
+  return (
+    <Suspense fallback={null}>
+      <RsvpFormContent />
+    </Suspense>
   );
 }

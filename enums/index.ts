@@ -10,6 +10,7 @@ export const RSVP_WITH_WHO = {
 } as const;
 
 export const RSVP_FORM_FIELDS = {
+  NAME: "name",
   MESSAGE: "message",
   WILL_ATTEND: "willAttend",
   WITH_WHO: "withWho",
@@ -17,6 +18,7 @@ export const RSVP_FORM_FIELDS = {
 } as const;
 
 export const VALIDATION_MESSAGES = {
+  NAME_REQUIRED: "Vui lòng nhập tên của bạn",
   NUMBER_OF_PEOPLE_REQUIRED: "Vui lòng nhập số lượng người tham dự",
   NUMBER_OF_PEOPLE_MIN: "Số lượng phải lớn hơn 0",
   NUMBER_OF_PEOPLE_MAX: "Số lượng không được vượt quá 20 người",

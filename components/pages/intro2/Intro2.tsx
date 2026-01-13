@@ -1,26 +1,26 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import { WEDDING_INFO } from "@/constants";
 import { motion, AnimatePresence } from "motion/react";
+import { useSearchParams } from "next/navigation";
+import { pinyonScript } from "@/app/fonts";
+import { formatGuestName } from "@/lib/utils";
 
 interface Intro2Props {
   onComplete?: () => void;
 }
 
-export default function Intro2({ onComplete }: Intro2Props) {
-  const [isExiting, setIsExiting] = useState(false);
-
-  const handleClick = () => {
-    setIsExiting(true);
-    // Delay để animation chạy xong rồi mới trigger callback
-    setTimeout(() => {
-      if (onComplete) {
-        onComplete();
-      }
-    }, 800); // Match với exit animation duration
-  };
+function IntroContent({
+  isExiting,
+  handleClick,
+}: {
+  isExiting: boolean;
+  handleClick: () => void;
+}) {
+  const searchParams = useSearchParams();
+  const guestName = formatGuestName(searchParams.get("u"));
 
   return (
     <AnimatePresence>
@@ -38,13 +38,13 @@ export default function Intro2({ onComplete }: Intro2Props) {
             ease: "easeInOut",
           }}
           onClick={handleClick}
-          className="h-dvh w-full flex flex-col items-center justify-center cursor-pointer overflow-hidden"
+          className="h-dvh w-full flex flex-col items-center justify-center cursor-pointer overflow-hidden relative"
         >
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-3xl font-cormorant-unicase mb-10 uppercase text-center flex-col flex gap-3 relative"
+            className="text-xl font-cormorant-unicase mb-10 uppercase text-center flex-col flex gap-3 absolute top-[5%]"
           >
             <span> {WEDDING_INFO.groom.shortName}</span>
             <span> {WEDDING_INFO.bride.shortName}</span>
@@ -52,6 +52,23 @@ export default function Intro2({ onComplete }: Intro2Props) {
               &
             </div>
           </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-center mb-14"
+          >
+            <p className="text-lg uppercase tracking-widest mb-2">
+              Trân trọng kính mời
+            </p>
+            <p
+              className={`${pinyonScript.className} text-5xl text-primary mt-2`}
+            >
+              {guestName}
+            </p>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -112,5 +129,24 @@ export default function Intro2({ onComplete }: Intro2Props) {
         </motion.div>
       )}
     </AnimatePresence>
+  );
+}
+
+export default function Intro2({ onComplete }: Intro2Props) {
+  const [isExiting, setIsExiting] = useState(false);
+
+  const handleClick = () => {
+    setIsExiting(true);
+    setTimeout(() => {
+      if (onComplete) {
+        onComplete();
+      }
+    }, 800);
+  };
+
+  return (
+    <Suspense fallback={null}>
+      <IntroContent isExiting={isExiting} handleClick={handleClick} />
+    </Suspense>
   );
 }

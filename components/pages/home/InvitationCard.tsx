@@ -6,11 +6,12 @@ import { motion, useInView } from "motion/react";
 import React, { useRef, Suspense } from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
+import { formatGuestName } from "@/lib/utils";
 
 function InvitationContent() {
   const { wedding } = WEDDING_INFO;
   const searchParams = useSearchParams();
-  const guestName = searchParams.get("u") || "Bạn";
+  const guestName = formatGuestName(searchParams.get("u"));
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true,

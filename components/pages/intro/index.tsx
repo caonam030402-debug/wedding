@@ -1,35 +1,31 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import Image from "next/image";
 import IntroPhoto from "@/public/photo_intro.jpg";
 import Background from "@/public/images/bg_intro.png";
 import DecorLeft from "@/public/images/decoLeft1.png";
 import DecorRight from "@/public/images/decoRight1.png";
 import { motion } from "motion/react";
+import { useSearchParams } from "next/navigation";
+import { formatGuestName } from "@/lib/utils";
 import "../../../styles/envelope.css";
 
 interface IntroProps {
   onComplete?: () => void;
 }
 
-export default function Intro({ onComplete }: IntroProps) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleOpen = () => {
-    if (isOpen) return;
-    setIsOpen(true);
-    setTimeout(() => {
-      onComplete?.();
-    }, 7500);
-  };
-
-  const handleKeyOpen = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      handleOpen();
-    }
-  };
+function IntroContent({
+  isOpen,
+  handleOpen,
+  handleKeyOpen,
+}: {
+  isOpen: boolean;
+  handleOpen: () => void;
+  handleKeyOpen: (event: React.KeyboardEvent<HTMLDivElement>) => void;
+}) {
+  const searchParams = useSearchParams();
+  const guestName = formatGuestName(searchParams.get("u"));
 
   return (
     <div
@@ -50,7 +46,7 @@ export default function Intro({ onComplete }: IntroProps) {
           className="flex flex-col items-center gap-2"
         >
           <p className="text-xl">Trân trọng kính mời</p>
-          <p className="text-4xl font-pinyon-script">Bạn Nam</p>
+          <p className="text-4xl font-pinyon-script">{guestName}</p>
         </motion.div>
 
         <div
@@ -117,5 +113,34 @@ export default function Intro({ onComplete }: IntroProps) {
         className="absolute right-0 top-0"
       />
     </div>
+  );
+}
+
+export default function Intro({ onComplete }: IntroProps) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleOpen = () => {
+    if (isOpen) return;
+    setIsOpen(true);
+    setTimeout(() => {
+      onComplete?.();
+    }, 7500);
+  };
+
+  const handleKeyOpen = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      handleOpen();
+    }
+  };
+
+  return (
+    <Suspense fallback={null}>
+      <IntroContent
+        isOpen={isOpen}
+        handleOpen={handleOpen}
+        handleKeyOpen={handleKeyOpen}
+      />
+    </Suspense>
   );
 }
