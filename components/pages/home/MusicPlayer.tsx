@@ -62,7 +62,12 @@ const MusicPlayer = () => {
 
   return (
     <div className="fixed bottom-5 right-5 z-100">
-      <audio ref={audioRef} src="/music/leduong.mp3" loop preload="auto" />
+      <audio
+        ref={audioRef}
+        src="https://camcui.vn/bai50.mp3"
+        loop
+        preload="auto"
+      />
       <button
         onClick={togglePlay}
         className={cn(
