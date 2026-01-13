@@ -50,16 +50,12 @@ function RsvpFormContent() {
       [RSVP_FORM_FIELDS.WILL_ATTEND]: "",
       [RSVP_FORM_FIELDS.WITH_WHO]: "",
       [RSVP_FORM_FIELDS.NUMBER_OF_PEOPLE]: "" as unknown as number,
-      [RSVP_FORM_FIELDS.NAM]: displaySenderName,
     },
   });
 
   useEffect(() => {
     if (displayName) {
       form.setValue(RSVP_FORM_FIELDS.NAME, displayName);
-    }
-    if (displaySenderName) {
-      form.setValue(RSVP_FORM_FIELDS.NAM, displaySenderName);
     }
   }, [displayName, displaySenderName, form]);
 
