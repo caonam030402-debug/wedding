@@ -42,7 +42,7 @@ export const metadata: Metadata = {
       "Trân trọng kính mời bạn đến dự buổi tiệc chung vui cùng gia đình chúng tôi!",
     images: [
       {
-        url: "/images/hero_banner.jpg",
+        url: "https://wedding-qhkh.vercel.app/images/hero_banner.jpg",
         width: 1200,
         height: 630,
         alt: "Wedding Invitation",
