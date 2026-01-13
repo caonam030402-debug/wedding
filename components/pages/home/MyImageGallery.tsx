@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React from "react";
 import ImageGallery from "react-image-gallery";
-import { motion, useInView } from "motion/react";
+import { motion } from "motion/react";
 
 const albumImages = [
   "https://res.cloudinary.com/dcbuhygls/image/upload/v1768220752/1R4A0831_nzd7qx.jpg",
@@ -43,69 +43,8 @@ const albumImages = [
   "https://res.cloudinary.com/dcbuhygls/image/upload/v1768220719/0C7A9403_dnpnbw.jpg",
   "https://res.cloudinary.com/dcbuhygls/image/upload/v1768220719/1R4A9854_nx879l.jpg",
   "https://res.cloudinary.com/dcbuhygls/image/upload/v1768220718/1R4A1691_cis95x.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219664/cld-sample-2.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219666/cld-sample-4.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219662/samples/logo.png",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219666/main-sample.png",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219664/cld-sample.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219666/cld-sample-5.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219665/cld-sample-3.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219663/samples/waves.png",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219663/samples/radial_02.png",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219662/samples/radial.avif",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219663/samples/paper.png",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219662/samples/zoom.avif",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219661/samples/upscale-face-1.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219662/samples/canvas.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219660/samples/woman-on-a-football-field.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219660/samples/dessert-on-a-plate.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219660/samples/cup-on-a-table.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219660/samples/coffee.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219660/samples/chair.png",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219659/samples/chair-and-coffee-table.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219658/samples/man-on-a-street.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219659/samples/man-portrait.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219658/samples/man-on-a-escalator.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219657/samples/outdoor-woman.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219657/samples/look-up.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219656/samples/breakfast.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219656/samples/smile.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219655/samples/balloons.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219653/samples/shoe.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219653/samples/two-ladies.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219650/samples/animals/kitten-playing.gif",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219651/samples/landscapes/landscape-panorama.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219650/samples/cloudinary-group.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219650/samples/landscapes/nature-mountains.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219650/samples/food/spices.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219649/samples/imagecon-group.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219649/samples/ecommerce/accessories-bag.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219649/samples/ecommerce/leather-bag-gray.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219648/samples/ecommerce/car-interior-design.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219648/samples/landscapes/beach-boat.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219648/samples/people/bicycle.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219648/samples/landscapes/architecture-signs.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219647/samples/animals/three-dogs.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219647/samples/people/jazz.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219647/samples/people/boy-snow-hoodie.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219647/samples/bike.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219646/samples/ecommerce/shoes.png",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219646/samples/people/smiling-man.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219646/samples/landscapes/girl-urban-view.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219646/samples/sheep.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219645/samples/food/pot-mussels.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219645/samples/animals/reindeer.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219645/samples/food/fish-vegetables.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219645/samples/people/kitchen-bar.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219643/samples/cloudinary-icon.png",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219643/samples/food/dessert.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219643/samples/cloudinary-logo-vector.svg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219643/samples/animals/cat.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219643/samples/ecommerce/analog-classic.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768219639/sample.jpg",
 ];
 
-// Chỉ tối ưu thumbnail để tránh lag, ảnh gốc giữ nguyên chất lượng
 const getThumbnailUrl = (url: string) => {
   if (!url.includes("cloudinary.com")) return url;
   return url.replace("/upload/", "/upload/c_thumb,w_250,g_auto,q_auto,f_auto/");

@@ -40,15 +40,27 @@ export const metadata: Metadata = {
     title: `${WEDDING_INFO.groom.shortName} & ${WEDDING_INFO.bride.shortName} Wedding`,
     description:
       "Trân trọng kính mời bạn đến dự buổi tiệc chung vui cùng gia đình chúng tôi!",
+    url: "https://wedding-qhkh.vercel.app",
+    siteName: "Wedding Invitation",
     images: [
       {
-        url: "https://wedding-qhkh.vercel.app/images/hero_banner.jpg",
+        url: "https://res.cloudinary.com/dcbuhygls/image/upload/v1768282104/0C7A9403_1_1_ygmqgv.jpg",
         width: 1200,
         height: 630,
         alt: "Wedding Invitation",
       },
     ],
+    locale: "vi_VN",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${WEDDING_INFO.groom.shortName} & ${WEDDING_INFO.bride.shortName} Wedding`,
+    description:
+      "Trân trọng kính mời bạn đến dự buổi tiệc chung vui cùng gia đình chúng tôi!",
+    images: [
+      "https://res.cloudinary.com/dcbuhygls/image/upload/v1768282104/0C7A9403_1_1_ygmqgv.jpg",
+    ],
   },
   icons: {
     icon: [
