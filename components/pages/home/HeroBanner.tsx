@@ -8,15 +8,14 @@ import { motion } from "motion/react";
 
 export default function HeroBanner() {
   return (
-    <div className="h-dvh w-full relative overflow-hidden">
+    <div className="h-dvh w-full relative overflow-hidden bg-gray-100">
       {/* Optimized background image */}
       <Image
         src={Background}
         alt="Wedding Banner"
         fill
         priority
-        quality={85}
-        placeholder="blur"
+        quality={75}
         className="object-cover object-center"
         sizes="100vw"
       />
@@ -24,9 +23,9 @@ export default function HeroBanner() {
       <div className="absolute bottom-0 left-0 w-full bg-linear-to-b from-transparent to-black h-[60%] z-10" />
       <motion.div
         className="font-pinyon-script text-3xl mb-2 absolute text-white top-[7%] w-full text-center left-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.1 }}
       >
         Wedding day
       </motion.div>

@@ -92,8 +92,8 @@ export default function SaveTheDate() {
         <Image
           src={Thu1}
           alt="Save the date"
-          width={650}
-          height={700}
+          width={400}
+          height={430}
           className="w-full"
         />
         <motion.div
@@ -113,13 +113,13 @@ export default function SaveTheDate() {
           }}
           className="w-full absolute top-0 right-0 z-3"
         >
-          <Image src={Thu2} alt="Save the date" width={650} height={550} />
+          <Image src={Thu2} alt="Save the date" width={400} height={340} />
         </motion.div>
         <Image
           src={Thu3}
           alt="Save the date"
-          width={650}
-          height={700}
+          width={400}
+          height={430}
           className="w-full absolute bottom-0 left-0 z-10"
         />
 
@@ -138,16 +138,16 @@ export default function SaveTheDate() {
           >
             <Image
               src={element.src}
-              alt="Save the date"
-              width={650}
-              height={700}
+              alt="Save the date decoration"
+              width={120}
+              height={120}
             />
           </motion.div>
         ))}
 
         <motion.div
           variants={{
-            closed: { y: 140, opacity: 0, rotate: -20 },
+            closed: { y: 30, opacity: 0, rotate: -15 },
             open: {
               y: 0,
               opacity: 1,
@@ -162,15 +162,15 @@ export default function SaveTheDate() {
         >
           <Image
             src={Image4}
-            alt="Save the date"
-            width={650}
-            height={700}
+            alt="Wedding memory"
+            width={300}
+            height={440}
             className="w-[150px] h-[220px] object-cover border-10 border-b-20 border-white shadow"
           />
         </motion.div>
         <motion.div
           variants={{
-            closed: { y: 160, opacity: 0, rotate: 20 },
+            closed: { y: 40, opacity: 0, rotate: 15 },
             open: {
               y: 0,
               opacity: 1,
@@ -185,9 +185,9 @@ export default function SaveTheDate() {
         >
           <Image
             src={Image5}
-            alt="Save the date"
-            width={650}
-            height={700}
+            alt="Wedding memory"
+            width={400}
+            height={500}
             className="w-[200px] h-[250px] object-cover border-10 border-b-20 border-white shadow"
           />
         </motion.div>

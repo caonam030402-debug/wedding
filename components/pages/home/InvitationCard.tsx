@@ -103,8 +103,8 @@ function InvitationContent() {
             className="w-10 h-10 mx-auto mt-2"
             src="https://w.ladicdn.com/s400x400/6322a62f2dad980013bb5005/untitled-1_0001_untitled-1_0004_vector-smart-object-20250619035202-sifjn-20250804081821-6svto.png"
             alt="Image Wedding"
-            width={100}
-            height={100}
+            width={40}
+            height={40}
           />
         </motion.div>
 

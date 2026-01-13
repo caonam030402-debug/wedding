@@ -74,6 +74,7 @@ function RsvpFormContent() {
     try {
       const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
       const GOOGLE_SHEET_ID = process.env.NEXT_PUBLIC_GOOGLE_SHEET_ID;
+      const GOOGLE_SHEET_NAME = process.env.NEXT_PUBLIC_GOOGLE_SHEET_NAME;
 
       if (!GOOGLE_SCRIPT_URL) {
         throw new Error("Missing NEXT_PUBLIC_GOOGLE_SCRIPT_URL env variable");
@@ -88,6 +89,7 @@ function RsvpFormContent() {
         body: JSON.stringify({
           ...data,
           sheetId: GOOGLE_SHEET_ID,
+          sheetName: GOOGLE_SHEET_NAME,
         }),
       });
 

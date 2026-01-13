@@ -15,6 +15,7 @@ export default function PolaroidPhotos() {
                 alt="Groom photo"
                 fill
                 className="object-cover"
+                sizes="240px"
               />
             </div>
           </div>
@@ -29,6 +30,7 @@ export default function PolaroidPhotos() {
                 alt="Bride photo"
                 fill
                 className="object-cover"
+                sizes="240px"
               />
             </div>
           </div>
