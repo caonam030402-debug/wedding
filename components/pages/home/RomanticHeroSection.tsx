@@ -18,11 +18,13 @@ export default function RomanticHeroSection() {
         All of me loves <br /> all of you
       </motion.div>
       <motion.div
-        initial={{ scale: 1.1, opacity: 0 }}
+        initial={{ clipPath: "inset(100% 0% 0% 0%)", y: 30 }}
         animate={
-          isInView ? { scale: 1, opacity: 1 } : { scale: 1.1, opacity: 0 }
+          isInView
+            ? { clipPath: "inset(0% 0% 0% 0%)", y: 0 }
+            : { clipPath: "inset(100% 0% 0% 0%)", y: 30 }
         }
-        transition={{ duration: 1.5, ease: "easeOut" }}
+        transition={{ duration: 1.8, ease: [0.19, 1, 0.22, 1] }}
       >
         <Image
           src={RomanticHeroImage}

@@ -1,18 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import React, { useRef } from "react";
-import { motion, useInView } from "motion/react";
+import React from "react";
+import { motion } from "motion/react";
 
 export const IS_GROOM_SIDE = process.env.NEXT_PUBLIC_SIDE === "groom";
 
 export default function Timeline() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, {
-    once: true,
-    amount: 0.1,
-    margin: "0px 0px -50px 0px",
-  });
   const timelineEvents = [
     {
       time: IS_GROOM_SIDE ? "10:30" : "10:00",
@@ -32,12 +26,14 @@ export default function Timeline() {
   ];
 
   return (
-    <section className="relative overflow-hidden" ref={ref}>
+    <section className="relative overflow-hidden">
       <motion.div
         className="text-center text-4xl font-pinyon-script"
         initial={{ opacity: 0, y: 30 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -50px 0px" }}
         transition={{ duration: 0.6 }}
+        style={{ willChange: "transform, opacity" }}
       >
         Time line
       </motion.div>
@@ -46,9 +42,10 @@ export default function Timeline() {
           <motion.div
             className="absolute inset-x-1/2 top-10 bottom-10 w-[2px] -translate-x-1/2 bg-gradient-to-b from-primary/35 via-primary/45 to-primary/25"
             initial={{ scaleY: 0 }}
-            animate={isInView ? { scaleY: 1 } : { scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true, amount: 0.1, margin: "0px 0px -50px 0px" }}
             transition={{ duration: 1, delay: 0.3 }}
-            style={{ transformOrigin: "top" }}
+            style={{ willChange: "transform", transformOrigin: "top" }}
           />
 
           <div className="space-y-12 sm:space-y-14">
@@ -59,24 +56,30 @@ export default function Timeline() {
                   key={`${event.time}-${event.title}`}
                   className="relative grid grid-cols-[1fr_auto_1fr] items-center gap-6 sm:gap-8"
                   initial={{ opacity: 0, y: 30 }}
-                  animate={
-                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
-                  }
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{
+                    once: true,
+                    amount: 0.1,
+                    margin: "0px 0px -50px 0px",
+                  }}
                   transition={{
                     duration: 0.4,
                     delay: 0.3 + index * 0.1,
                     ease: "easeOut",
                   }}
+                  style={{ willChange: "transform, opacity" }}
                 >
                   <motion.div
                     className="flex justify-end "
                     initial={{ opacity: 0, x: textOnRight ? 30 : 0 }}
-                    animate={
-                      isInView
-                        ? { opacity: 1, x: 0 }
-                        : { opacity: 0, x: textOnRight ? 30 : 0 }
-                    }
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{
+                      once: true,
+                      amount: 0.1,
+                      margin: "0px 0px -50px 0px",
+                    }}
                     transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
+                    style={{ willChange: "transform, opacity" }}
                   >
                     {textOnRight ? (
                       <Image
@@ -93,12 +96,18 @@ export default function Timeline() {
                   <motion.div
                     className="flex justify-center"
                     initial={{ scale: 0 }}
-                    animate={isInView ? { scale: 1 } : { scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{
+                      once: true,
+                      amount: 0.1,
+                      margin: "0px 0px -50px 0px",
+                    }}
                     transition={{
                       duration: 0.3,
                       delay: 0.5 + index * 0.1,
                       ease: "easeOut",
                     }}
+                    style={{ willChange: "transform" }}
                   >
                     <div className="relative flex h-8 w-8 items-center justify-center">
                       <span className="relative h-3 w-3 rounded-full border-4 border-white bg-primary shadow-[0_8px_24px_rgba(66,89,113,0.32)]" />
@@ -108,12 +117,14 @@ export default function Timeline() {
                   <motion.div
                     className="flex justify-start"
                     initial={{ opacity: 0, x: textOnRight ? 0 : -30 }}
-                    animate={
-                      isInView
-                        ? { opacity: 1, x: 0 }
-                        : { opacity: 0, x: textOnRight ? 0 : -30 }
-                    }
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{
+                      once: true,
+                      amount: 0.1,
+                      margin: "0px 0px -50px 0px",
+                    }}
                     transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
+                    style={{ willChange: "transform, opacity" }}
                   >
                     {textOnRight ? (
                       <TimeBlock align="left" {...event} />

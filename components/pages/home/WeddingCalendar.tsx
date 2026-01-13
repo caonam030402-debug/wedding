@@ -35,23 +35,26 @@ export default function WeddingCalendar() {
   });
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden" ref={ref}>
       <motion.div
-        initial={{ scale: 1.1, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
-        viewport={{ once: true }}
-        className="w-full h-full"
+        initial={{ clipPath: "inset(100% 0% 0% 0%)", scale: 1.05 }}
+        animate={
+          isInView
+            ? { clipPath: "inset(0% 0% 0% 0%)", scale: 1 }
+            : { clipPath: "inset(100% 0% 0% 0%)", scale: 1.05 }
+        }
+        transition={{ duration: 1.8, ease: [0.19, 1, 0.22, 1] }}
+        className="w-full"
       >
         <Image
           src={Image6}
           alt="anhcamnhan"
           width={1000}
           height={1000}
-          className="w-full h-full object-cover"
+          className="w-full h-auto object-cover"
         />
       </motion.div>
-      <div className="absolute top-0 left-0 w-full h-full " ref={ref}>
+      <div className="absolute top-0 left-0 w-full h-full ">
         <div className="flex flex-col h-full items-center p-6 gap-6">
           <motion.div
             className={`${pinyonScript.className} text-3xl leading-none`}

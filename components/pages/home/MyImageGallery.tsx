@@ -1,6 +1,7 @@
 import React from "react";
 import ImageGallery from "react-image-gallery";
 import { motion } from "motion/react";
+import NextImage from "next/image";
 
 const albumImages = [
   "https://res.cloudinary.com/dcbuhygls/image/upload/v1768220752/1R4A0831_nzd7qx.jpg",
@@ -63,12 +64,34 @@ export default function MyImageGallery() {
       </motion.div>
       <ImageGallery
         showPlayButton={false}
-        lazyLoad={true}
         autoPlay={true}
         showFullscreenButton={false}
         slideInterval={5000}
         items={images}
         preventDefaultTouchmoveEvent={false}
+        renderItem={(item) => (
+          <div className="relative h-full w-full overflow-hidden">
+            <NextImage
+              src={item.original}
+              alt="Wedding Gallery"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 85vw"
+              priority={item.original === images[0].original}
+            />
+          </div>
+        )}
+        renderThumbInner={(item) => (
+          <div className="relative aspect-square w-full overflow-hidden">
+            <NextImage
+              src={item.thumbnail || ""}
+              alt="Thumbnail"
+              fill
+              className="object-cover"
+              sizes="100px"
+            />
+          </div>
+        )}
       />
     </div>
   );

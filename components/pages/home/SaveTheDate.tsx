@@ -147,7 +147,7 @@ export default function SaveTheDate() {
 
         <motion.div
           variants={{
-            closed: { y: 140, opacity: 0, rotate: -20 },
+            closed: { y: 30, opacity: 0, rotate: -15 },
             open: {
               y: 0,
               opacity: 1,
@@ -170,7 +170,7 @@ export default function SaveTheDate() {
         </motion.div>
         <motion.div
           variants={{
-            closed: { y: 160, opacity: 0, rotate: 20 },
+            closed: { y: 40, opacity: 0, rotate: 15 },
             open: {
               y: 0,
               opacity: 1,

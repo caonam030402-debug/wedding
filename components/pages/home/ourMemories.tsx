@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React, { useRef } from "react";
 import Photo1 from "@/public/images/hero_banner.jpg";
-import { motion, useInView } from "motion/react";
+import { motion } from "motion/react";
 
 // Component riêng cho từng ảnh với detection chính xác
 interface PhotoItemProps {
@@ -18,12 +18,6 @@ interface PhotoItemProps {
 
 function PhotoItem({ photo, direction }: PhotoItemProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, {
-    once: true,
-    amount: 0.5,
-    margin: "0px 0px -150px 0px",
-  });
-
   const initialX = direction === "left" ? -50 : 50;
 
   return (
@@ -31,11 +25,13 @@ function PhotoItem({ photo, direction }: PhotoItemProps) {
       ref={ref}
       className={`${photo.className} relative overflow-hidden`}
       initial={{ opacity: 0, x: initialX }}
-      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: initialX }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.5, margin: "0px 0px -150px 0px" }}
       transition={{
         duration: 0.6,
         ease: "easeOut",
       }}
+      style={{ willChange: "transform, opacity" }}
     >
       <Image
         src={photo.src}
@@ -49,12 +45,6 @@ function PhotoItem({ photo, direction }: PhotoItemProps) {
 }
 
 export default function OurMemories() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, {
-    once: true,
-    amount: 0.1,
-    margin: "0px 0px -50px 0px",
-  });
   const photos = [
     {
       id: 1,
@@ -121,12 +111,14 @@ export default function OurMemories() {
   };
 
   return (
-    <div className="w-full mx-auto bg-black text-white" ref={ref}>
+    <div className="w-full mx-auto bg-black text-white">
       <motion.div
         className="relative"
         initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -50px 0px" }}
         transition={{ duration: 0.8 }}
+        style={{ willChange: "opacity" }}
       >
         <Image
           src={Photo1}
@@ -141,8 +133,10 @@ export default function OurMemories() {
           <motion.div
             className="text-5xl font-pinyon-script whitespace-nowrap absolute bottom-0 left-1/2 -translate-x-1/2"
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1, margin: "0px 0px -50px 0px" }}
             transition={{ duration: 0.6, delay: 0.3 }}
+            style={{ willChange: "transform, opacity" }}
           >
             Our memories
           </motion.div>
@@ -153,8 +147,10 @@ export default function OurMemories() {
         <motion.div
           className="mb-8"
           initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1, margin: "0px 0px -50px 0px" }}
           transition={{ duration: 0.6, delay: 0.4 }}
+          style={{ willChange: "transform, opacity" }}
         >
           <div className="flex items-center gap-4 mb-4">
             {/* <h2 className="text-5xl font-pinyon-script whitespace-nowrap">
@@ -184,9 +180,11 @@ export default function OurMemories() {
       </div>
       <motion.div
         initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -50px 0px" }}
         transition={{ duration: 0.4, delay: 0.5 }}
         className="absolute top-[-3%] right-[-5%]"
+        style={{ willChange: "opacity" }}
       >
         <Image
           src="https://w.ladicdn.com/s450x550/6322a62f2dad980013bb5005/thiep-thanh-dat-element_0011_23-20251010163910-afce_.png"
@@ -200,9 +198,11 @@ export default function OurMemories() {
 
       <motion.div
         initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -50px 0px" }}
         transition={{ duration: 0.4, delay: 0.6 }}
         className="absolute bottom-[-9%] left-[-5%]"
+        style={{ willChange: "opacity" }}
       >
         <Image
           src="https://w.ladicdn.com/s450x600/6322a62f2dad980013bb5005/thiep-thanh-dat-element_0013_21-20251010163910-jjqab.png"
