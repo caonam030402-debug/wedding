@@ -47,10 +47,13 @@ export default function WeddingRsvpForm() {
     console.log("Submit data:", data);
     setIsSubmitting(true);
     try {
-      const GOOGLE_SCRIPT_URL =
-        "https://script.google.com/macros/s/AKfycbx6ZOH_XHVXxdrdE_I2_d1KrQmfnh15620nnFnEiayaA0fJToF-aLnp15Ep_1f3fWkz/exec";
-      //script.google.com/macros/s/AKfycbyn2xAVgGXT_Prk1-R9spChRpTBPqcqZltq4F4WdSNbQz2nzins96kt3qsKrygNVze0/exec
-      https: await fetch(GOOGLE_SCRIPT_URL, {
+      const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
+
+      if (!GOOGLE_SCRIPT_URL) {
+        throw new Error("Missing NEXT_PUBLIC_GOOGLE_SCRIPT_URL env variable");
+      }
+
+      await fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
         mode: "no-cors",
         headers: {
