@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useRef } from "react";
 import ThankyouImage from "@/public/images/thankyou.jpg";
 import { motion, useInView } from "motion/react";
+import { pinyonScript } from "@/app/fonts";
 
 export default function Thankyou() {
   const ref = useRef(null);
@@ -24,16 +25,19 @@ export default function Thankyou() {
         />
       </motion.div>
 
-      <div className="absolute top-0 left-0 w-full bg-linear-to-b from-black/80 to-transparent h-[50%] z-1" />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.8 }}
+        className="absolute top-0 left-0 w-full bg-linear-to-b from-black/80 to-transparent h-[50%] z-1"
+      />
 
       <div className="text-white z-10 absolute text-center flex flex-col items-center h-full px-6 w-full pt-4">
         <motion.div
-          className="text-4xl font-pinyon-script mb-1"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={
-            isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
-          }
-          transition={{ duration: 0.6, delay: 0.5 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className={`${pinyonScript.className} text-6xl mb-4`}
         >
           Thank You!
         </motion.div>
