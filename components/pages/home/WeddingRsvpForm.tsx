@@ -37,7 +37,11 @@ function RsvpFormContent() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const searchParams = useSearchParams();
   const guestNameFromUrl = searchParams.get("u");
+  const senderNameFromUrl = searchParams.get("n") || searchParams.get("nam"); // Lấy tên người gửi (nam name)
   const displayName = guestNameFromUrl ? formatGuestName(guestNameFromUrl) : "";
+  const displaySenderName = senderNameFromUrl
+    ? formatGuestName(senderNameFromUrl)
+    : "";
 
   const form = useForm({
     defaultValues: {
@@ -46,6 +50,7 @@ function RsvpFormContent() {
       [RSVP_FORM_FIELDS.WILL_ATTEND]: "",
       [RSVP_FORM_FIELDS.WITH_WHO]: "",
       [RSVP_FORM_FIELDS.NUMBER_OF_PEOPLE]: "" as unknown as number,
+      [RSVP_FORM_FIELDS.NAM]: displaySenderName,
     },
   });
 
@@ -53,7 +58,10 @@ function RsvpFormContent() {
     if (displayName) {
       form.setValue(RSVP_FORM_FIELDS.NAME, displayName);
     }
-  }, [displayName, form]);
+    if (displaySenderName) {
+      form.setValue(RSVP_FORM_FIELDS.NAM, displaySenderName);
+    }
+  }, [displayName, displaySenderName, form]);
 
   const willAttendValue = useWatch({
     control: form.control,
@@ -69,6 +77,7 @@ function RsvpFormContent() {
     setIsSubmitting(true);
     try {
       const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
+      const GOOGLE_SHEET_ID = process.env.NEXT_PUBLIC_GOOGLE_SHEET_ID;
 
       if (!GOOGLE_SCRIPT_URL) {
         throw new Error("Missing NEXT_PUBLIC_GOOGLE_SCRIPT_URL env variable");
@@ -80,7 +89,10 @@ function RsvpFormContent() {
         headers: {
           "Content-Type": "text/plain",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          ...data,
+          sheetId: GOOGLE_SHEET_ID,
+        }),
       });
 
       toast.success("Cảm ơn bạn đã xác nhận!");
