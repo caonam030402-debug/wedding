@@ -36,23 +36,24 @@ function RsvpFormContent() {
   const [isGiftDialogOpen, setIsGiftDialogOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const searchParams = useSearchParams();
+  const guestNameFromUrl = searchParams.get("u");
+  const displayName = guestNameFromUrl ? formatGuestName(guestNameFromUrl) : "";
 
   const form = useForm({
     defaultValues: {
-      [RSVP_FORM_FIELDS.NAME]: "",
+      [RSVP_FORM_FIELDS.NAME]: displayName,
       [RSVP_FORM_FIELDS.MESSAGE]: "",
       [RSVP_FORM_FIELDS.WILL_ATTEND]: "",
       [RSVP_FORM_FIELDS.WITH_WHO]: "",
-      [RSVP_FORM_FIELDS.NUMBER_OF_PEOPLE]: 1,
+      [RSVP_FORM_FIELDS.NUMBER_OF_PEOPLE]: "" as unknown as number,
     },
   });
 
   useEffect(() => {
-    const guestName = searchParams.get("u");
-    if (guestName) {
-      form.setValue(RSVP_FORM_FIELDS.NAME, formatGuestName(guestName));
+    if (displayName) {
+      form.setValue(RSVP_FORM_FIELDS.NAME, displayName);
     }
-  }, [searchParams, form]);
+  }, [displayName, form]);
 
   const willAttendValue = useWatch({
     control: form.control,
@@ -126,23 +127,6 @@ function RsvpFormContent() {
         >
           <FormField
             control={form.control}
-            name={RSVP_FORM_FIELDS.NAME}
-            rules={{ required: VALIDATION_MESSAGES.NAME_REQUIRED }}
-            render={({ field, fieldState }) => (
-              <FormItem>
-                <FormControl>
-                  <Input placeholder="Tên của bạn" {...field} />
-                </FormControl>
-                {fieldState.error && (
-                  <p className="text-sm text-destructive mt-1 text-left">
-                    {fieldState.error.message}
-                  </p>
-                )}
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
             name={RSVP_FORM_FIELDS.MESSAGE}
             render={({ field }) => (
               <FormItem>
@@ -158,7 +142,8 @@ function RsvpFormContent() {
           <FormField
             control={form.control}
             name={RSVP_FORM_FIELDS.WILL_ATTEND}
-            render={({ field }) => (
+            rules={{ required: VALIDATION_MESSAGES.WILL_ATTEND_REQUIRED }}
+            render={({ field, fieldState }) => (
               <FormItem>
                 <Select
                   onValueChange={field.onChange}
@@ -170,7 +155,7 @@ function RsvpFormContent() {
                         ? RSVP_OPTIONS.willAttend.find(
                             (item) => item.value === field.value
                           )?.label
-                        : "Bạn sẽ sẽ đến chứ?"}
+                        : "Bạn sẽ đến chứ?"}
                     </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
@@ -183,6 +168,11 @@ function RsvpFormContent() {
                     </SelectGroup>
                   </SelectContent>
                 </Select>
+                {fieldState.error && (
+                  <p className="text-sm text-destructive mt-1 text-left">
+                    {fieldState.error.message}
+                  </p>
+                )}
               </FormItem>
             )}
           />
@@ -190,7 +180,8 @@ function RsvpFormContent() {
             <FormField
               control={form.control}
               name={RSVP_FORM_FIELDS.WITH_WHO}
-              render={({ field }) => (
+              rules={{ required: VALIDATION_MESSAGES.WITH_WHO_REQUIRED }}
+              render={({ field, fieldState }) => (
                 <FormItem>
                   <Select
                     onValueChange={field.onChange}
@@ -215,6 +206,11 @@ function RsvpFormContent() {
                       </SelectGroup>
                     </SelectContent>
                   </Select>
+                  {fieldState.error && (
+                    <p className="text-sm text-destructive mt-1 text-left">
+                      {fieldState.error.message}
+                    </p>
+                  )}
                 </FormItem>
               )}
             />
@@ -242,7 +238,11 @@ function RsvpFormContent() {
                         placeholder="Số lượng người tham dự"
                         type="number"
                         {...field}
-                        onChange={(e) => field.onChange(Number(e.target.value))}
+                        value={field.value || ""}
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          field.onChange(val === "" ? "" : Number(val));
+                        }}
                       />
                     </FormControl>
                     {fieldState.error && (

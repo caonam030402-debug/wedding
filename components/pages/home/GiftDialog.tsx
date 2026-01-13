@@ -1,7 +1,7 @@
 import React from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import Image from "next/image";
-import { WEDDING_INFO } from "@/constants";
+import { WEDDING_INFO, IS_GROOM_SIDE } from "@/constants";
 import WeddingImage from "@/public/images/anhtrongQE.jpg";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -11,15 +11,7 @@ interface GiftDialogProps {
 }
 
 export default function GiftDialog({ open, onOpenChange }: GiftDialogProps) {
-  const whoIsGettingGift = "groom";
-
-  const {
-    gift = (type: "groom" | "bride") => {
-      return WEDDING_INFO.gift(type);
-    },
-  } = WEDDING_INFO;
-
-  const giftInfo = gift(whoIsGettingGift);
+  const { gift } = WEDDING_INFO;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -63,7 +55,7 @@ export default function GiftDialog({ open, onOpenChange }: GiftDialogProps) {
                   className="relative w-28 h-28 sm:w-32 sm:h-32 bg-white rounded-lg shadow-sm border border-gray-100 shrink-0"
                 >
                   <Image
-                    src={giftInfo?.qrCode?.src || ""}
+                    src={gift?.qrCode?.src || ""}
                     alt="QR Code"
                     fill
                     className="object-contain p-2"
@@ -71,13 +63,13 @@ export default function GiftDialog({ open, onOpenChange }: GiftDialogProps) {
                 </motion.div>
                 <div className="space-y-1 text-gray-800">
                   <p className="font-medium text-lg">
-                    {giftInfo?.bankName || "Ngân hàng"}
+                    {gift?.bankName || "Ngân hàng"}
                   </p>
                   <div className="space-y-0.5 text-sm opacity-90">
                     <p className="font-mono">
-                      STK: {giftInfo?.accountNumber || ""}
+                      STK: {gift?.accountNumber || ""}
                     </p>
-                    <p>Chủ TK: {giftInfo?.accountName || ""}</p>
+                    <p>Chủ TK: {gift?.accountName || ""}</p>
                   </div>
                 </div>
               </motion.div>

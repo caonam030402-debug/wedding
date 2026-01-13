@@ -37,7 +37,7 @@ export default function Thankyou() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className={`${pinyonScript.className} text-6xl mb-4`}
+          className={`${pinyonScript.className} text-4xl mb-3`}
         >
           Thank You!
         </motion.div>

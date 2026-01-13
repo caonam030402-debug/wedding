@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState, Suspense } from "react";
+import React, { useState, Suspense, useEffect } from "react";
 import { WEDDING_INFO } from "@/constants";
 import { motion, AnimatePresence } from "motion/react";
 import { useSearchParams } from "next/navigation";
@@ -22,6 +22,20 @@ function IntroContent({
   const searchParams = useSearchParams();
   const guestName = formatGuestName(searchParams.get("u"));
 
+  useEffect(() => {
+    if (!isExiting) {
+      document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    };
+  }, [isExiting]);
+
   return (
     <AnimatePresence>
       {!isExiting && (
@@ -38,7 +52,7 @@ function IntroContent({
             ease: "easeInOut",
           }}
           onClick={handleClick}
-          className="h-dvh w-full flex flex-col items-center justify-center cursor-pointer overflow-hidden relative"
+          className="fixed inset-0 w-full flex flex-col items-center justify-center cursor-pointer overflow-hidden z-[9999] touch-none"
         >
           <motion.div
             initial={{ opacity: 0, y: 30 }}

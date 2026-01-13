@@ -19,6 +19,8 @@ export const RSVP_FORM_FIELDS = {
 
 export const VALIDATION_MESSAGES = {
   NAME_REQUIRED: "Vui lòng nhập tên của bạn",
+  WILL_ATTEND_REQUIRED: "Vui lòng xác nhận bạn sẽ đến chứ?",
+  WITH_WHO_REQUIRED: "Vui lòng chọn bạn sẽ tham gia cùng ai?",
   NUMBER_OF_PEOPLE_REQUIRED: "Vui lòng nhập số lượng người tham dự",
   NUMBER_OF_PEOPLE_MIN: "Số lượng phải lớn hơn 0",
   NUMBER_OF_PEOPLE_MAX: "Số lượng không được vượt quá 20 người",

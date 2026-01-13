@@ -129,6 +129,7 @@ export default function MyImageGallery() {
         showFullscreenButton={false}
         slideInterval={5000}
         items={images}
+        preventDefaultTouchmoveEvent={false}
       />
     </div>
   );

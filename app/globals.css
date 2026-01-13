@@ -149,7 +149,6 @@
   /* Optimize scrolling on mobile */
   * {
     -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
   }
 
   /* GPU acceleration for transforms */
@@ -169,6 +168,15 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.image-gallery,
+.image-gallery-content,
+.image-gallery-swipe,
+.image-gallery-slides,
+.image-gallery-slide,
+.image-gallery-image {
+  touch-action: pan-y !important;
 }
 
 .image-gallery-slide {

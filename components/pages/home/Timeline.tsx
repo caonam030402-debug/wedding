@@ -4,6 +4,8 @@ import Image from "next/image";
 import React, { useRef } from "react";
 import { motion, useInView } from "motion/react";
 
+export const IS_GROOM_SIDE = process.env.NEXT_PUBLIC_SIDE === "groom";
+
 export default function Timeline() {
   const ref = useRef(null);
   const isInView = useInView(ref, {
@@ -13,17 +15,17 @@ export default function Timeline() {
   });
   const timelineEvents = [
     {
-      time: "10:10",
+      time: IS_GROOM_SIDE ? "10:30" : "10:10",
       title: "Đón khách",
       icon: "https://w.ladicdn.com/s400x400/6322a62f2dad980013bb5005/untitled-6-20250420030805-cyjyq.png",
     },
+    // {
+    //   time: "10:30",
+    //   title: "Nghi thức",
+    //   icon: "https://w.ladicdn.com/s400x400/6322a62f2dad980013bb5005/untitled-4-20250420023945-8bthf.png",
+    // },
     {
-      time: "10:30",
-      title: "Nghi thức",
-      icon: "https://w.ladicdn.com/s400x400/6322a62f2dad980013bb5005/untitled-4-20250420023945-8bthf.png",
-    },
-    {
-      time: "11:00",
+      time: "11:11",
       title: "Khai tiệc",
       icon: "https://w.ladicdn.com/s400x400/6322a62f2dad980013bb5005/untitled-5-20250420024050-0e1lg.png",
     },
