@@ -12,22 +12,13 @@ export default function LoadingScreen({
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Đảm bảo trang luôn ở trên cùng khi đang load
-    window.scrollTo(0, 0);
-
-    // Khóa scroll khi đang loading
-    document.body.style.overflow = "hidden";
-
-    // Giả lập thời gian loading để assets kịp render
     const timer = setTimeout(() => {
       setLoading(false);
-      document.body.style.overflow = "unset";
       onFinished?.();
     }, 2500);
 
     return () => {
       clearTimeout(timer);
-      document.body.style.overflow = "unset";
     };
   }, [onFinished]);
 
@@ -44,6 +35,8 @@ export default function LoadingScreen({
             backgroundSize: "auto",
             backgroundPosition: "center",
             backgroundRepeat: "repeat",
+            willChange: "transform, opacity",
+            transform: "translateZ(0)",
           }}
         >
           <div className="relative flex items-center justify-center">
@@ -52,8 +45,13 @@ export default function LoadingScreen({
               animate={{ rotate: 360 }}
               transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
               className="relative w-64 h-64 flex items-center justify-center"
+              style={{ transform: "translateZ(0)", willChange: "transform" }}
             >
-              <svg viewBox="0 0 200 200" className="w-full h-full">
+              <svg
+                viewBox="0 0 200 200"
+                className="w-full h-full"
+                style={{ willChange: "transform" }}
+              >
                 <defs>
                   <path
                     id="circlePath"
@@ -77,6 +75,7 @@ export default function LoadingScreen({
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1 }}
                 className="flex flex-col items-center"
+                style={{ willChange: "transform, opacity" }}
               >
                 <span className="font-pinyon-script text-4xl text-primary">
                   Wedding
