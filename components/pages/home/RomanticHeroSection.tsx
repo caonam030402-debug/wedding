@@ -9,7 +9,7 @@ export default function RomanticHeroSection() {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
-    <div className="relative bg-gray-50" ref={ref}>
+    <div className="relative" ref={ref}>
       <motion.div
         className="text-4xl font-pinyon-script text-white absolute top-[15%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10 w-full"
         initial={{ opacity: 0, y: -20 }}
