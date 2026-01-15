@@ -27,7 +27,7 @@ export default function Home() {
       {!isLoading && <MusicPlayer />}
 
       <div className="space-y-15">
-        <HeroBanner />
+        <HeroBanner isReady={!isLoading} />
         <SaveTheDate />
         {/* <Image
         src="https://w.ladicdn.com/s750x400/6322a62f2dad980013bb5005/_0004_22-20251020191638-92wfz.png"

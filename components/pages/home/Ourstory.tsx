@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { WEDDING_INFO } from "@/constants";
 import Thu from "@/public/images/thu_v2.png";
 import Thach from "@/public/images/thach_v2.png";
+import { Typewriter } from "@/components/ui/Typewriter";
 
 export default function OurStory() {
   const storyText =
@@ -99,16 +100,9 @@ export default function OurStory() {
       >
         Our Story
       </motion.div>
-      <motion.div
-        className="px-6 text-justify"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
-        style={{ willChange: "opacity, transform" }}
-      >
-        {storyText}
-      </motion.div>
+      <div className="px-6 text-justify h-[180px]">
+        <Typewriter text={storyText} speed={30} delay={0.5} />
+      </div>
     </div>
   );
 }

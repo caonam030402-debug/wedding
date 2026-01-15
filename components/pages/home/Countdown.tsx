@@ -55,18 +55,26 @@ export default function Countdown() {
   return (
     <div className="flex flex-col items-center" ref={ref}>
       <motion.div
-        className="text-2xl flex justify-center items-center gap-3"
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.8 }}
+        className="text-3xl flex justify-center items-center gap-3 font-philosopher tracking-tighter"
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
+        transition={{ duration: 1, ease: "easeOut" }}
       >
-        <div>{timeLeft.days.toString().padStart(2, "0")}</div>
-        <div>:</div>
-        <div>{timeLeft.hours.toString().padStart(2, "0")}</div>
-        <div>:</div>
-        <div>{timeLeft.minutes.toString().padStart(2, "0")}</div>
-        <div>:</div>
-        <div>{timeLeft.seconds.toString().padStart(2, "0")}</div>
+        <div className="flex flex-col items-center min-w-[3rem]">
+          <span>{timeLeft.days.toString().padStart(2, "0")}</span>
+        </div>
+        <span className="opacity-30 mb-1">:</span>
+        <div className="flex flex-col items-center min-w-[3rem]">
+          <span>{timeLeft.hours.toString().padStart(2, "0")}</span>
+        </div>
+        <span className="opacity-30 mb-1">:</span>
+        <div className="flex flex-col items-center min-w-[3rem]">
+          <span>{timeLeft.minutes.toString().padStart(2, "0")}</span>
+        </div>
+        <span className="opacity-30 mb-1">:</span>
+        <div className="flex flex-col items-center min-w-[3rem]">
+          <span>{timeLeft.seconds.toString().padStart(2, "0")}</span>
+        </div>
       </motion.div>
     </div>
   );
