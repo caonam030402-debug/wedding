@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { motion } from "motion/react";
+import { motion, Variants } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef } from "react";
 import Thu1 from "@/public/images/thu1_v2.png";
@@ -40,29 +40,66 @@ export default function SaveTheDate() {
     // },
   ];
 
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
   return (
-    <div
+    <motion.div
       className="flex flex-col items-center px-6 relative space-y-3"
       ref={ref}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={containerVariants}
     >
       <motion.div
         className="text-center text-2xl w-[80%] mx-auto font-cormorant-unicase font-bold"
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ duration: 0.6 }}
+        variants={itemVariants}
       >
         QUYẾT ĐỊNH BÊN NHAU TRỌN ĐỜI.
       </motion.div>
-      <div className="h-[30px] w-px bg-primary"></div>
+
+      <motion.div
+        className="h-[30px] w-px bg-primary"
+        variants={{
+          hidden: { scaleY: 0, opacity: 0 },
+          visible: {
+            scaleY: 1,
+            opacity: 1,
+            transition: { duration: 0.8, ease: "easeInOut" },
+          },
+        }}
+        style={{ originY: 0 }}
+      />
+
       <motion.div
         className="flex gap-2 items-center font-pinyon-script text-3xl"
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
+        variants={itemVariants}
       >
         Save the date
       </motion.div>
-      <Countdown />
+
+      <motion.div variants={itemVariants}>
+        <Countdown />
+      </motion.div>
       {/* <motion.div
         className="text-4xl"
         initial={{ opacity: 0, scale: 0.8 }}
@@ -192,6 +229,6 @@ export default function SaveTheDate() {
           />
         </motion.div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 }

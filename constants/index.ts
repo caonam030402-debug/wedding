@@ -7,11 +7,11 @@ const BRIDE_SIDE = {
   wedding: {
     time: "11:30",
     startTime: "11:00",
-    dayOfWeek: "Thứ Tư",
-    date: "28",
-    month: "1",
+    dayOfWeek: "Thứ Sáu",
+    date: "24",
+    month: "7",
     year: "2026",
-    lunarDate: "10 tháng 12 năm Ất Tỵ",
+    lunarDate: "11 tháng 6 năm Bính Ngọ",
   },
   venue: {
     name: "Trung tâm Hội nghị Nhà hàng Tiệc cưới Cẩm Uyên",

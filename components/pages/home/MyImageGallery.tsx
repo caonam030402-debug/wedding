@@ -23,7 +23,6 @@ const albumImages = [
   "https://res.cloudinary.com/dcbuhygls/image/upload/v1768220732/1R4A0208_vuywvq.jpg",
   "https://res.cloudinary.com/dcbuhygls/image/upload/v1768220732/1R4A1310_hyk4xu.jpg",
   "https://res.cloudinary.com/dcbuhygls/image/upload/v1768220731/0C7A9349_nrkdae.jpg",
-  "https://res.cloudinary.com/dcbuhygls/image/upload/v1768220731/1R4A1190_jdzsgm.jpg",
   "https://res.cloudinary.com/dcbuhygls/image/upload/v1768220731/1R4A1124_jrtc8k.jpg",
   "https://res.cloudinary.com/dcbuhygls/image/upload/v1768220730/1R4A0950_anrp0y.jpg",
   "https://res.cloudinary.com/dcbuhygls/image/upload/v1768220730/0C7A9357_yd6ywk.jpg",
