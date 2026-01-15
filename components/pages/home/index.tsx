@@ -7,20 +7,24 @@ import SaveTheDate from "./SaveTheDate";
 import WeddingCalendar from "./WeddingCalendar";
 import Thankyou from "./Thankyou";
 import Timeline from "./Timeline";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import MyImageGallery from "./MyImageGallery";
 import RomanticHeroSection from "./RomanticHeroSection";
 import OurStory from "./Ourstory";
 import MusicPlayer from "./MusicPlayer";
+import LoadingScreen from "@/components/LoadingScreen";
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
   }, []);
 
   return (
     <div className="relative">
-      <MusicPlayer />
+      <LoadingScreen onFinished={() => setIsLoading(false)} />
+      {!isLoading && <MusicPlayer />}
 
       <div className="space-y-15">
         <HeroBanner />
