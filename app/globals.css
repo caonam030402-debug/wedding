@@ -137,6 +137,23 @@
     will-change: transform, opacity;
   }
 
+  /* Slow spin animation optimized for mobile */
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg) translateZ(0);
+    }
+    to {
+      transform: rotate(360deg) translateZ(0);
+    }
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 10s linear infinite;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform;
+  }
+
   /* Reduce motion for users who prefer it */
   @media (prefers-reduced-motion: reduce) {
     * {

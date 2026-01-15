@@ -35,22 +35,18 @@ export default function LoadingScreen({
             backgroundSize: "auto",
             backgroundPosition: "center",
             backgroundRepeat: "repeat",
-            willChange: "transform, opacity",
-            transform: "translateZ(0)",
           }}
         >
           <div className="relative flex items-center justify-center">
-            {/* Vòng tròn chữ xoay */}
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-              className="relative w-64 h-64 flex items-center justify-center"
-              style={{ transform: "translateZ(0)", willChange: "transform" }}
-            >
+            {/* Vòng tròn chữ xoay - tối ưu cho mobile */}
+            <div className="relative w-64 h-64 flex items-center justify-center animate-spin-slow">
               <svg
                 viewBox="0 0 200 200"
                 className="w-full h-full"
-                style={{ willChange: "transform" }}
+                style={{
+                  transform: "translateZ(0)",
+                  backfaceVisibility: "hidden",
+                }}
               >
                 <defs>
                   <path
@@ -58,7 +54,10 @@ export default function LoadingScreen({
                     d="M 100, 100 m -70, 0 a 70,70 0 1,1 140,0 a 70,70 0 1,1 -140,0"
                   />
                 </defs>
-                <text className="fill-primary font-cormorant-unicase text-[12px] uppercase tracking-[0.35em]">
+                <text
+                  className="fill-primary font-cormorant-unicase text-[12px] uppercase tracking-[0.35em]"
+                  style={{ paintOrder: "stroke fill" }}
+                >
                   <textPath href="#circlePath" startOffset="0%">
                     {WEDDING_INFO.groom.name} & {WEDDING_INFO.bride.name} •{" "}
                     {WEDDING_INFO.groom.name} & {WEDDING_INFO.bride.name} •{" "}
@@ -66,16 +65,15 @@ export default function LoadingScreen({
                   </textPath>
                 </text>
               </svg>
-            </motion.div>
+            </div>
 
             {/* Chữ Wedding ở giữa */}
             <div className="absolute inset-0 flex items-center justify-center">
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1 }}
+                transition={{ duration: 1, ease: "easeOut" }}
                 className="flex flex-col items-center"
-                style={{ willChange: "transform, opacity" }}
               >
                 <span className="font-pinyon-script text-4xl text-primary">
                   Wedding
@@ -84,15 +82,6 @@ export default function LoadingScreen({
               </motion.div>
             </div>
           </div>
-
-          {/* <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="mt-6 font-cormorant-unicase tracking-[0.2em] text-primary/60 text-sm uppercase"
-          >
-            Đang tải lời mời...
-          </motion.div> */}
         </motion.div>
       )}
     </AnimatePresence>
