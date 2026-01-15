@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React, { useRef } from "react";
 // import RomanticHeroImage from "@/public/images/image2.jpg";
-import RomanticHeroImage from "@/public/images/0C7A9620_sl2dny.jpg";
+import RomanticHeroImage from "@/public/images/0C7A9620_sl2dny_v2.jpg";
 import { motion, useInView } from "motion/react";
 
 export default function RomanticHeroSection() {
@@ -31,7 +31,8 @@ export default function RomanticHeroSection() {
           src={RomanticHeroImage}
           alt="Romantic Hero"
           sizes="100vw"
-          className="w-full h-auto object-cover"
+          placeholder="blur"
+          className="w-full h-auto object-cover transition-opacity duration-500"
           quality={75}
         />
       </motion.div>

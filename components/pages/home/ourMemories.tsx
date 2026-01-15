@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import React, { useRef } from "react";
-import Photo1 from "@/public/images/hero_banner.jpg";
+import Photo1 from "@/public/images/hero_banner_v2.jpg";
 import { motion } from "motion/react";
 
 // Component riêng cho từng ảnh với detection chính xác
@@ -49,49 +49,49 @@ export default function OurMemories() {
   const photos = [
     {
       id: 1,
-      src: "/images/hero_banner.jpg",
+      src: "/images/hero_banner_v2.jpg",
       alt: "Wedding memory 1",
       className: "col-span-6 h-[180px]",
     },
     {
       id: 2,
-      src: "/images/hero_banner.jpg",
+      src: "/images/hero_banner_v2.jpg",
       alt: "Wedding memory 2",
       className: "row-span-2 col-span-4 h-full",
     },
     {
       id: 3,
-      src: "/images/hero_banner.jpg",
+      src: "/images/hero_banner_v2.jpg",
       alt: "Wedding memory 3",
       className: "h-[180px] col-span-2",
     },
     {
       id: 4,
-      src: "/images/hero_banner.jpg",
+      src: "/images/hero_banner_v2.jpg",
       alt: "Wedding memory 4",
       className: "h-[180px] col-span-2",
     },
     {
       id: 5,
-      src: "/images/hero_banner.jpg",
+      src: "/images/hero_banner_v2.jpg",
       alt: "Wedding memory 4",
       className: "h-[180px] col-span-3",
     },
     {
       id: 6,
-      src: "/images/hero_banner.jpg",
+      src: "/images/hero_banner_v2.jpg",
       alt: "Wedding memory 4",
       className: "h-[180px] col-span-3",
     },
     {
       id: 7,
-      src: "/images/hero_banner.jpg",
+      src: "/images/hero_banner_v2.jpg",
       alt: "Wedding memory 4",
       className: "h-[180px] col-span-3",
     },
     {
       id: 8,
-      src: "/images/hero_banner.jpg",
+      src: "/images/hero_banner_v2.jpg",
       alt: "Wedding memory 4",
       className: "h-[180px] col-span-3",
     },

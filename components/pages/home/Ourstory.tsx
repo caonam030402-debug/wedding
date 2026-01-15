@@ -2,8 +2,8 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
 import { WEDDING_INFO } from "@/constants";
-import Thu from "@/public/images/thu.png";
-import Thach from "@/public/images/thach.png";
+import Thu from "@/public/images/thu_v2.png";
+import Thach from "@/public/images/thach_v2.png";
 
 export default function OurStory() {
   const storyText =

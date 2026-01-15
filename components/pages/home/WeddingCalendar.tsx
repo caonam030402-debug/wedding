@@ -5,7 +5,7 @@ import { WEDDING_INFO } from "@/constants";
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
 import Image from "next/image";
-import Image6 from "@/public/images/image6.jpg";
+import Image6 from "@/public/images/image6_v2.jpg";
 
 const DAYS_OF_WEEK = ["MON", "TUE", "WED", "THUR", "FRI", "SAT", "SUN"];
 
