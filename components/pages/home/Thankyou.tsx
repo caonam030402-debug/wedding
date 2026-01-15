@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import { pinyonScript } from "@/app/fonts";
 import ThankyouImage from "@/public/images/thankyou_v2.jpg";
+import { Typewriter } from "@/components/ui/Typewriter";
 
 export default function Thankyou() {
   return (
@@ -41,17 +42,13 @@ export default function Thankyou() {
         >
           Thank You!
         </motion.div>
-        <motion.div
-          className="w-full text-base leading-relaxed max-w-2xl"
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          style={{ willChange: "transform, opacity" }}
-        >
-          Cảm ơn bạn đã đến chung vui cùng chúng mình. Sự hiện diện của bạn là
-          món quà ý nghĩa nhất trong ngày trọng đại này.
-        </motion.div>
+        <div className="w-full text-base leading-relaxed max-w-2xl">
+          <Typewriter
+            text="Cảm ơn bạn đã đến chung vui cùng chúng mình. Sự hiện diện của bạn là món quà ý nghĩa nhất trong ngày trọng đại này."
+            speed={30}
+            delay={1}
+          />
+        </div>
       </div>
     </div>
   );
