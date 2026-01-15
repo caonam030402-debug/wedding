@@ -13,38 +13,38 @@ export default function OurStory() {
     <div>
       <div className="h-[430px] relative mt-25">
         <motion.div
-          className="absolute top-0 left-[7%]"
+          className="absolute top-0 left-[7%] w-[45%]"
           initial={{ opacity: 0, rotate: -15, x: -20 }}
           whileInView={{ opacity: 1, rotate: -8, x: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 1, ease: "easeOut" }}
           style={{ willChange: "transform, opacity" }}
         >
-        <Image
-          src={Thach}
-          alt="Our Story"
-          width={400}
-          height={460}
-          priority // Thêm priority
-          className="w-[200px] h-[230px] object-cover border-10 border-b-20 border-white shadow"
-        />
-      </motion.div>
-      <motion.div
-        className="absolute bottom-0 right-[10%]"
-        initial={{ opacity: 0, rotate: 15, x: 20 }}
-        whileInView={{ opacity: 1, rotate: 8, x: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-        style={{ willChange: "transform, opacity" }}
-      >
-        <Image
-          src={Thu}
-          alt="Our Story"
-          width={400}
-          height={460}
-          priority // Thêm priority
-          className="w-[200px] h-[230px] object-cover border-10 border-b-20 border-white shadow"
-        />
+          <Image
+            src={Thach}
+            alt="Our Story"
+            width={400}
+            height={460}
+            priority // Thêm priority
+            className="w-full h-[230px] object-cover border-10 border-b-20 border-white shadow"
+          />
+        </motion.div>
+        <motion.div
+          className="absolute bottom-0 right-[10%] w-[45%]"
+          initial={{ opacity: 0, rotate: 15, x: 20 }}
+          whileInView={{ opacity: 1, rotate: 8, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+          style={{ willChange: "transform, opacity" }}
+        >
+          <Image
+            src={Thu}
+            alt="Our Story"
+            width={400}
+            height={460}
+            priority // Thêm priority
+            className="w-full h-[230px] object-cover border-10 border-b-20 border-white shadow"
+          />
         </motion.div>
         <motion.div
           className="absolute top-[10%] right-[7%]"
@@ -73,7 +73,7 @@ export default function OurStory() {
           </div>
         </motion.div>
         <motion.div
-          className="absolute right-[50%] translate-x-1/2 bottom-[50%] translate-y-1/2"
+          className="absolute right-[50%] translate-x-1/2 bottom-[50%] translate-y-1/2 w-[14%]"
           initial={{ opacity: 0, scale: 0 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -85,7 +85,7 @@ export default function OurStory() {
             alt="Our Story"
             width={120}
             height={120}
-            className="w-[60px] object-cover"
+            className="w-full object-cover"
           />
         </motion.div>
       </div>

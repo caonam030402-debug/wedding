@@ -41,7 +41,7 @@ export default function RomanticHeroSection() {
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 1, delay: 0.5 }}
-        className="absolute bottom-[-13%] right-1/2 translate-x-1/2 w-24 z-20"
+        className="absolute bottom-[-13%] right-1/2 translate-x-1/2 w-[25%] z-20"
       >
         <Image
           src="https://w.ladicdn.com/s450x500/6322a62f2dad980013bb5005/thiep-thanh-dat-element_0002_32-20251010170122-ijn7k.png"

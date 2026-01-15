@@ -24,15 +24,15 @@ export default function SaveTheDate() {
     {
       src: "https://w.ladicdn.com/s400x400/6322a62f2dad980013bb5005/thiep-thanh-dat-element_0020_14-20251010160528-z-man.png",
       className:
-        "w-[60px] absolute right-[50%] translate-x-1/2 bottom-[20%] z-20",
+        "w-[20%] absolute right-[50%] translate-x-1/2 bottom-[20%] z-20",
     },
     {
       src: "https://w.ladicdn.com/s450x550/6322a62f2dad980013bb5005/thiep-thanh-dat-element_0017_17-20251010160529-gulgj.png",
-      className: "w-[120px] absolute bottom-[-25%] -left-[10%] z-20",
+      className: "w-[40%] absolute bottom-[-25%] -left-[10%] z-20",
     },
     {
       src: "https://w.ladicdn.com/s450x600/6322a62f2dad980013bb5005/thiep-thanh-dat-element_0019_15-20251010160529-kgwqz.png",
-      className: "w-[100px] absolute bottom-[20%] right-[-10%] z-20",
+      className: "w-[30%] absolute bottom-[20%] right-[-10%] z-20",
     },
     // {
     //   src: "https://w.ladicdn.com/s400x450/6322a62f2dad980013bb5005/thiep-thanh-dat-element_0026_8-20251010160529-58dj0.png",
@@ -158,14 +158,14 @@ export default function SaveTheDate() {
               },
             },
           }}
-          className="absolute top-[10%] left-[10%] z-8 w-[150px] h-[220px] object-cover"
+          className="absolute top-[10%] left-[5%] z-8 w-[50%] h-[60%] object-cover"
         >
           <Image
             src={Image4}
             alt="Wedding memory"
             width={300}
             height={440}
-            className="w-[150px] h-[220px] object-cover border-10 border-b-20 border-white shadow"
+            className="w-full h-full object-cover border-10 border-b-20 border-white shadow"
           />
         </motion.div>
         <motion.div
@@ -181,14 +181,14 @@ export default function SaveTheDate() {
               },
             },
           }}
-          className="absolute top-[-3%] right-[10%] z-3 w-[200px] h-[250px] object-cover"
+          className="absolute top-[-3%] right-[5%] z-3 w-[60%] h-[60%] object-cover"
         >
           <Image
             src={Image5}
             alt="Wedding memory"
             width={400}
             height={500}
-            className="w-[200px] h-[250px] object-cover border-10 border-b-20 border-white shadow"
+            className="w-full h-[250px] object-cover border-10 border-b-20 border-white shadow"
           />
         </motion.div>
       </motion.div>

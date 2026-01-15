@@ -87,7 +87,7 @@ function IntroContent({
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative h-[30vh]"
+            className="relative h-[250px]"
           >
             <Image
               src="https://w.ladicdn.com/s600x550/6322a62f2dad980013bb5005/thiep-thanh-dat-element_0031_3-20251010171938-1el86.png"
@@ -100,14 +100,14 @@ function IntroContent({
               src="https://w.ladicdn.com/s450x500/6322a62f2dad980013bb5005/thiep-thanh-dat-element_0028_6-20251010171938-olp-t.png"
               alt="Intro2"
               width={600}
-              className="absolute top-[-25%] left-[-15%] w-30"
+              className="absolute top-[-25%] left-[-15%] w-[35%]"
               height={550}
             />
             <Image
               src="https://w.ladicdn.com/s500x650/6322a62f2dad980013bb5005/thiep-thanh-dat-element_0029_5-20251010171938-3wx4g.png"
               alt="Intro2"
               width={600}
-              className="absolute bottom-[-50%] right-[-15%] w-35"
+              className="absolute bottom-[-50%] right-[-15%] w-[45%]"
               height={550}
             />
             <motion.div
@@ -118,7 +118,7 @@ function IntroContent({
                 ease: "easeInOut",
                 delay: 1.5,
               }}
-              className="absolute right-1/2 translate-x-1/2 bottom-[20%] w-12"
+              className="absolute right-1/2 translate-x-1/2 bottom-[20%] w-[14%]"
             >
               <Image
                 src="https://w.ladicdn.com/s400x400/6322a62f2dad980013bb5005/thiep-thanh-dat-element_0030_4-20251010171938-qfleq.png"
