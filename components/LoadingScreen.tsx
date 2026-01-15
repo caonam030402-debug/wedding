@@ -33,7 +33,7 @@ export default function LoadingScreen({
 
   return (
     <AnimatePresence>
-      {true && (
+      {loading && (
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
