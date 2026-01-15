@@ -8,13 +8,22 @@ export function cn(...inputs: ClassValue[]) {
 export function formatGuestName(name: string | null): string {
   if (!name) return "Bạn";
 
-  // Thay thế các ký tự đặc biệt như _ hoặc - thành khoảng trắng cho dễ đọc
-  // Và xử lý trường hợp URL bị encode + thành khoảng trắng
-  const formattedName = name.replace(/[_-]/g, " ");
+  // 1. Chuyển chữ "and" thành " + "
+  // 2. Chuyển khoảng trắng (do trình duyệt giải mã dấu + trong URL) thành " + "
+  // 3. Chuyển dấu gạch ngang "-" thành khoảng trắng
+  const formattedName = name
+    .replace(/\band\b/gi, " + ")
+    .replace(/ /g, " + ")
+    .replace(/-/g, " ");
 
-  // Viết hoa chữ cái đầu của mỗi từ cho đẹp
   return formattedName
     .split(" ")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-    .join(" ");
+    .filter(Boolean)
+    .map((word) =>
+      word === "+"
+        ? "+"
+        : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+    )
+    .join(" ")
+    .replace(/\s\+\s/g, " + "); // Đảm bảo khoảng cách dấu + đẹp
 }
