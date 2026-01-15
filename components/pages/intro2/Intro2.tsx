@@ -77,7 +77,7 @@ function IntroContent({
               Trân trọng kính mời
             </p>
             <p
-              className={`${pinyonScript.className} text-3xl text-primary mt-2`}
+              className={`${pinyonScript.className} text-5xl text-primary mt-2`}
             >
               {guestName}
             </p>
