@@ -32,6 +32,7 @@ export default function RomanticHeroSection() {
           alt="Romantic Hero"
           sizes="100vw"
           placeholder="blur"
+          priority // Thêm priority để tải ngay trong lúc loading
           className="w-full h-auto object-cover transition-opacity duration-500"
           quality={75}
         />
