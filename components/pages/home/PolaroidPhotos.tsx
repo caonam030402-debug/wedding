@@ -11,7 +11,7 @@ export default function PolaroidPhotos() {
           <div className="bg-white p-3 pb-12 shadow-2xl hover:shadow-3xl transition-shadow">
             <div className="relative w-[240px] h-[320px] overflow-hidden">
               <Image
-                src="/images/hero_banner.jpg"
+                src="/images/hero_banner_v2.jpg"
                 alt="Groom photo"
                 fill
                 className="object-cover"
@@ -26,7 +26,7 @@ export default function PolaroidPhotos() {
           <div className="bg-white p-3 pb-12 shadow-2xl hover:shadow-3xl transition-shadow">
             <div className="relative w-[240px] h-[320px] overflow-hidden">
               <Image
-                src="/images/hero_banner.jpg"
+                src="/images/hero_banner_v2.jpg"
                 alt="Bride photo"
                 fill
                 className="object-cover"

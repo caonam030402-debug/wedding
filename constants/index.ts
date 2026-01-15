@@ -1,5 +1,5 @@
-import qrGai from "../public/images/qr_gai.png";
-import qrTrai from "../public/images/qr_trai.png";
+import qrGai from "../public/images/qr_gai_v2.png";
+import qrTrai from "../public/images/qr_trai_v2.png";
 
 export const IS_GROOM_SIDE = process.env.NEXT_PUBLIC_SIDE === "groom";
 

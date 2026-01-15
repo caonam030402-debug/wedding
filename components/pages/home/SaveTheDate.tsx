@@ -5,11 +5,11 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef } from "react";
-import Thu1 from "@/public/images/thu1.png";
-import Thu2 from "@/public/images/thu2.png";
-import Thu3 from "@/public/images/thu3.png";
-import Image5 from "@/public/images/image5.jpg";
-import Image4 from "@/public/images/image4.png";
+import Thu1 from "@/public/images/thu1_v2.png";
+import Thu2 from "@/public/images/thu2_v2.png";
+import Thu3 from "@/public/images/thu3_v2.png";
+import Image5 from "@/public/images/image5_v2.jpg";
+import Image4 from "@/public/images/image4_v2.png";
 import Countdown from "./Countdown";
 
 export default function SaveTheDate() {

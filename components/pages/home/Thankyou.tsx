@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
 import { pinyonScript } from "@/app/fonts";
+import ThankyouImage from "@/public/images/thankyou_v2.jpg";
 
 export default function Thankyou() {
   return (
@@ -19,10 +20,11 @@ export default function Thankyou() {
         {/* Lớp phủ đen nằm trong khối trượt để không bị xám đục */}
         <div className="absolute inset-0 bg-linear-to-b from-black/40 to-transparent z-10" />
         <Image
-          src="/images/thankyou.jpg"
+          src={ThankyouImage}
           alt="Thankyou"
           fill
-          className="object-cover"
+          placeholder="blur"
+          className="object-cover transition-opacity duration-500"
           sizes="100vw"
           quality={75}
         />

@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import Background from "@/public/images/image3.jpg";
+import Background from "@/public/images/image3_v2.jpg";
 import { WEDDING_INFO } from "@/constants";
 import { motion } from "motion/react";
 
@@ -16,7 +16,8 @@ export default function HeroBanner() {
         fill
         priority
         quality={75}
-        className="object-cover object-center"
+        placeholder="blur"
+        className="object-cover object-center transition-opacity duration-500"
         sizes="100vw"
       />
       {/* Gradient overlay */}

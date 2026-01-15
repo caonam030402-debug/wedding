@@ -89,7 +89,7 @@ export default function RootLayout({
       <head>
         <link
           rel="preload"
-          href="/images/hero_banner.jpg"
+          href="/images/hero_banner_v2.jpg"
           as="image"
           type="image/jpeg"
         />

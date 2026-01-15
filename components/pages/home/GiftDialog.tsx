@@ -2,7 +2,7 @@ import React from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import Image from "next/image";
 import { WEDDING_INFO, IS_GROOM_SIDE } from "@/constants";
-import WeddingImage from "@/public/images/anhtrongQE.jpg";
+import WeddingImage from "@/public/images/anhtrongQE_v2.jpg";
 import { motion, AnimatePresence } from "motion/react";
 
 interface GiftDialogProps {

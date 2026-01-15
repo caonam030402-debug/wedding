@@ -3,9 +3,9 @@
 import React, { useState, Suspense } from "react";
 import Image from "next/image";
 import IntroPhoto from "@/public/photo_intro.jpg";
-import Background from "@/public/images/bg_intro.png";
-import DecorLeft from "@/public/images/decoLeft1.png";
-import DecorRight from "@/public/images/decoRight1.png";
+import Background from "@/public/images/bg_intro_v2.png";
+import DecorLeft from "@/public/images/decoLeft1_v2.png";
+import DecorRight from "@/public/images/decoRight1_v2.png";
 import { motion } from "motion/react";
 import { useSearchParams } from "next/navigation";
 import { formatGuestName } from "@/lib/utils";
